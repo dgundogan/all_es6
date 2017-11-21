@@ -213,4 +213,115 @@ function balancedParens(string){
 }
 
 
-console.log(balancedParens("((())"));
+//console.log(balancedParens("((())"));
+
+
+
+
+////////////////////////////////
+///////arrow function///////////
+////////////////////////////////
+
+const add =  (a,b) => {
+  return a+b;
+}
+
+//console.log(add(1,2));
+
+
+function addNumbers(...numbers){
+  return numbers.reduce((sum,number)=>{
+    return sum + number;
+  },0);
+}
+
+
+//console.log(addNumbers(1,2,3,4,5,6,7,8,9,10));
+
+
+
+function validateShoppingList(...items){
+  if(items.indexOf('milk')<0){
+    return ['milk',...items];
+  }
+
+    return items;
+}
+
+
+//console.log(validateShoppingList('orange','bread','eggs','milk'));
+
+//////////////////////
+///////class//////////
+//////////////////////
+function Car(options){
+  this.title = options.title;
+}
+
+//method of Class
+Car.prototype.drive = function() {
+  return 'vroom';
+}
+//create constructor with new
+const car = new Car({title: "Focus"});
+
+//console.log(car.drive());
+
+//inheritance
+function Toyota(options){
+  Car.call(this,options);
+  this.color = options.color;
+}
+
+
+//console.log(toyota);
+
+//create inheritance method
+Toyota.prototype = Object.create(Car.prototype);
+Toyota.prototype.constructor  = Toyota;
+
+Toyota.prototype.honk = function(){
+  return "beep";
+}
+
+
+const toyota = new Toyota({color: "red", title:"Daily"})
+
+//console.log(toyota.drive());
+//console.log(toyota.honk());
+
+
+//////////////////
+////iterator//////
+//////////////////
+
+const colorxs = ['red','green','blue'];
+
+for(let color of colorxs){
+  //console.log(color);
+}
+
+
+///////////////////
+/////generators////
+///////////////////
+
+
+
+
+///////////////////
+/////promise///////
+///////////////////
+
+promise = new Promise((resolve,reject)=>{
+  var request = new XHTMLRequest()
+  //make request
+  request.onload = () => {
+    reject();
+  }
+});
+
+promise
+    .then(()=> console.log("finally finished"))
+    .then(()=>console.log("i was also ran!!!"))
+    .catch(()=>console.log("uh oh!!"));
